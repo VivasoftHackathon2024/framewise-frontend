@@ -144,7 +144,7 @@ const VideoLogs = () => {
                 onClick={() => chatMutation.mutate(selectedVideo.id)}
                 disabled={chatMutation.isPending || isChatOpen}
                 className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 
-                                         disabled:bg-green-400 disabled:cursor-not-allowed
+                                         disabled:bg-gray-400 disabled:cursor-not-allowed
                                          transition-colors flex items-center gap-2"
               >
                 {chatMutation.isPending ? (
