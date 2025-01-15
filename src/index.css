@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer utilities {
+    .scrollbar-thin {
+      scrollbar-width: thin;
+    }
+  }
+
+/* Chat interface positioning */
+.chat-interface {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100vh;
+    background: white;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    padding: 20px;
+    z-index: 50;
+}
+
+.chat-interface.open {
+    right: 0;
+}
+
+/* Main container transition */
+.container-transition {
+    transition: padding-right 0.3s ease;
+}
+
+.container-with-chat {
+    padding-right: 400px;
+}
