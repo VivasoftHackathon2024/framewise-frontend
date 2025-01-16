@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { FaBuilding, FaUsers, FaFlask, FaCalendar, FaClock, FaEnvelope, FaPhone, FaEdit, FaTimes } from 'react-icons/fa';
-import { SERVER_URL } from "../data/path";
-import authenticatedAxios from '../config/axiosConfig';
-import Spinner from '../components/Spinner';
+import { SERVER_URL } from "../../data/path";
+import authenticatedAxios from '../../config/axiosConfig';
+import Spinner from '../../components/Spinner';
 
 export default function Profile() {
     const navigate = useNavigate();

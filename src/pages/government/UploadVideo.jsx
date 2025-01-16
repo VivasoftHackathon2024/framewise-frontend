@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { videoApi } from '../api/videoApi';
-import VideoAnalysisLogs from '../components/UploadVideo/VideoAnalysisLogs';
-import VideoSummary from '../components/UploadVideo/VideoSummary';
-import VideoChatInterface from '../components/UploadVideo/VideoChatInterface';
-import FireAgentComponent from '../components/UploadVideo/FireAgentComponent';
-import AssaultAgentComponent from '../components/UploadVideo/AssaultAgentComponent';
-import CrimeAgentComponent from '../components/UploadVideo/CrimeAgentComponent';
-import DrugAgentComponent from '../components/UploadVideo/DrugAgentComponent';
-import TheftAgentComponent from '../components/UploadVideo/TheftAgentComponent';
-import { errorToastConfig, successToastConfig } from '../config/toastConfig';
+import { videoApi } from '../../api/videoApi';
+import VideoAnalysisLogs from '../../components/UploadVideo/VideoAnalysisLogs';
+import VideoSummary from '../../components/UploadVideo/VideoSummary';
+import VideoChatInterface from '../../components/UploadVideo/VideoChatInterface';
+import FireAgentComponent from '../../components/UploadVideo/FireAgentComponent';
+import AssaultAgentComponent from '../../components/UploadVideo/AssaultAgentComponent';
+import CrimeAgentComponent from '../../components/UploadVideo/CrimeAgentComponent';
+import DrugAgentComponent from '../../components/UploadVideo/DrugAgentComponent';
+import TheftAgentComponent from '../../components/UploadVideo/TheftAgentComponent';
+import { errorToastConfig, successToastConfig } from '../../config/toastConfig';
 
 
 const LoadingSpinner = ({ size = "small" }) => (
@@ -271,7 +271,7 @@ const UploadVideo = () => {
                                             </div>
                                         )}
                                         {uploadedVideo.summary_result && (
-                                            <VideoSummary summaryResult={uploadedVideo.summary_result} />
+                                            <VideoSummary title="Video Summary" summaryResult={uploadedVideo.summary_result} />
                                         )}
                                     </div>
                                 </div>

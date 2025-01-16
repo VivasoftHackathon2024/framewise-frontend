@@ -2,20 +2,25 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-const VideoSummary = ({ summaryResult, className = '' }) => {
+const VideoSummary = ({ title, summaryResult, className = '' }) => {
     if (!summaryResult) {
         return null;
     }
 
-    // Handle both string and object formats
-    let summary = typeof summaryResult === 'object' ? summaryResult.summary : summaryResult;
+    // Handle all possible formats
+    let summary = typeof summaryResult === 'object' ? 
+        (summaryResult.summary || summaryResult.customer_behaviour || summaryResult) : 
+        summaryResult;
 
-    summary = summary.replace(/\\n/g, '\n')  // Convert escaped newlines to actual newlines
+    // Only do string replacement if it's a string
+    if (typeof summary === 'string') {
+        summary = summary.replace(/\\n/g, '\n');
+    }
 
     return (
         <div className={`bg-gray-50 rounded-lg shadow-lg p-4 h-full flex flex-col ${className}`}>
             <h2 className="text-xl font-bold mb-4">
-                Video Summary
+                {title}
             </h2>
 
             <div className={`

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import authenticatedAxios from "../config/axiosConfig";
-import { SERVER_URL } from "../data/path";
+import authenticatedAxios from "../../config/axiosConfig";
+import { SERVER_URL } from "../../data/path";
 import { toast } from 'react-toastify';
-import { successToastConfig, errorToastConfig } from "../config/toastConfig";
+import { successToastConfig, errorToastConfig } from "../../config/toastConfig";
 import { FiUpload, FiUsers, FiMessageCircle, FiLogOut, FiSettings, FiHome, FiUser } from 'react-icons/fi';
 import { RiTeamLine, RiOrganizationChart } from 'react-icons/ri';
 import { MdBusinessCenter } from 'react-icons/md';

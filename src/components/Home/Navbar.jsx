@@ -72,11 +72,28 @@ export default function Navbar() {
         );
     }
 
-    const navItems = [
-        { name: 'Dashboard', path: '/home', icon: <FiHome className="text-lg" /> },
-        { name: 'Upload', path: '/upload-video', icon: <FiUpload className="text-lg" /> },
-        { name: 'Video Logs', path: '/video-logs', icon: <AiOutlineHistory className="text-lg" /> },
-    ];
+    const getNavItems = () => {
+        const userType = JSON.parse(localStorage.getItem('user')).user_type;
+
+        switch (userType) {
+            case 'government':
+                return [
+                    { name: 'Dashboard', path: '/government/home', icon: <FiHome className="text-lg" /> },
+                    { name: 'Upload', path: '/government/upload-video', icon: <FiUpload className="text-lg" /> },
+                    { name: 'Video Logs', path: '/government/video-logs', icon: <AiOutlineHistory className="text-lg" /> },
+                ];
+            case 'company':
+                return [
+                    { name: 'Dashboard', path: '/company/home', icon: <FiHome className="text-lg" /> },
+                    { name: 'Upload', path: '/company/upload-video', icon: <FiUpload className="text-lg" /> },
+                    { name: 'Video Logs', path: '/company/video-logs', icon: <AiOutlineHistory className="text-lg" /> },
+                ];
+            default:
+                return [];
+        }
+    };
+
+    const navItems = getNavItems();
 
     const handleLogout = async () => {
         try {
@@ -89,6 +106,18 @@ export default function Navbar() {
             console.error('Logout error:', error.message);
             const errorMessage = error.response?.data?.message || "Failed to logout";
             toast.error(errorMessage, errorToastConfig);
+        }
+    };
+
+    const getProfilePath = () => {
+        const userType = user.user_type;
+        switch (userType) {
+            case 'government':
+                return '/government/profile';
+            case 'company':
+                return '/company/profile';
+            default:
+                return '/login';
         }
     };
 
@@ -152,7 +181,7 @@ export default function Navbar() {
                                 </div>
                                 <button
                                     onClick={() => {
-                                        navigate('/profile');
+                                        navigate(getProfilePath());
                                         setIsProfileDropdownOpen(false);
                                     }}
                                     className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 

@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
-import { videoApi } from "../api/videoApi";
-import VideoAnalysisLogs from "../components/UploadVideo/VideoAnalysisLogs";
-import VideoSummary from "../components/UploadVideo/VideoSummary";
-import VideoChatInterface from "../components/UploadVideo/VideoChatInterface";
-import { errorToastConfig } from "../config/toastConfig";
-import Spinner from "../components/Spinner";
-import FireAgentComponent from "../components/UploadVideo/FireAgentComponent";
-import AssaultAgentComponent from "../components/UploadVideo/AssaultAgentComponent";
-import CrimeAgentComponent from "../components/UploadVideo/CrimeAgentComponent";
-import DrugAgentComponent from "../components/UploadVideo/DrugAgentComponent";
-import TheftAgentComponent from "../components/UploadVideo/TheftAgentComponent";
+import { videoApi } from "../../api/videoApi";
+import VideoAnalysisLogs from "../../components/UploadVideo/VideoAnalysisLogs";
+import VideoSummary from "../../components/UploadVideo/VideoSummary";
+import VideoChatInterface from "../../components/UploadVideo/VideoChatInterface";
+import { errorToastConfig } from "../../config/toastConfig";
+import Spinner from "../../components/Spinner";
+import FireAgentComponent from "../../components/UploadVideo/FireAgentComponent";
+import AssaultAgentComponent from "../../components/UploadVideo/AssaultAgentComponent";
+import CrimeAgentComponent from "../../components/UploadVideo/CrimeAgentComponent";
+import DrugAgentComponent from "../../components/UploadVideo/DrugAgentComponent";
+import TheftAgentComponent from "../../components/UploadVideo/TheftAgentComponent";
 
 const LoadingSpinner = ({ size = "small" }) => (
   <svg

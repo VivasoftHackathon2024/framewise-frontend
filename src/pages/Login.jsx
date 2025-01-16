@@ -47,7 +47,14 @@ export default function Login() {
       });
       
       // Navigate to home page after successful login
-      navigate('/home');
+      console.log(response.data.user.user_type);
+      if (response.data.user.user_type === 'government') {
+        navigate('/government/home');
+      } else if (response.data.user.user_type === 'company') {
+        navigate('/company/home');
+      } else {
+        navigate('/login');
+      }
       
     } catch (err) {
       toast.error(err.response?.data?.error || 'An error occurred during login', {
