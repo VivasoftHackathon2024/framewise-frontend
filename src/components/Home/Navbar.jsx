@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FiUpload, FiLogOut, FiHome, FiUser } from 'react-icons/fi';
+import { FiUpload, FiLogOut, FiHome, FiUser, FiVideo } from 'react-icons/fi';
 import { AiOutlineHistory } from 'react-icons/ai';
 import { toast } from 'react-toastify';
 import authenticatedAxios from "../../config/axiosConfig";
@@ -81,12 +81,14 @@ export default function Navbar() {
                     { name: 'Dashboard', path: '/government/home', icon: <FiHome className="text-lg" /> },
                     { name: 'Upload', path: '/government/upload-video', icon: <FiUpload className="text-lg" /> },
                     { name: 'Video Logs', path: '/government/video-logs', icon: <AiOutlineHistory className="text-lg" /> },
+                    { name: 'Stream', path: '/government/stream-analysis', icon: <FiVideo className="text-lg" /> },
                 ];
             case 'company':
                 return [
                     { name: 'Dashboard', path: '/company/home', icon: <FiHome className="text-lg" /> },
                     { name: 'Upload', path: '/company/upload-video', icon: <FiUpload className="text-lg" /> },
                     { name: 'Video Logs', path: '/company/video-logs', icon: <AiOutlineHistory className="text-lg" /> },
+                    { name: 'Stream', path: '/company/stream-analysis', icon: <FiVideo className="text-lg" /> },
                 ];
             default:
                 return [];

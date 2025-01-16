@@ -6,11 +6,13 @@ import GovernmentHome from "../pages/government/Home";
 import GovernmentProfile from "../pages/government/Profile";
 import GovernmentUploadVideo from "../pages/government/UploadVideo";
 import GovernmentVideoLogs from "../pages/government/VideoLogs";
+import GovernmentStreamAnalysis from "../pages/government/StreamAnalysis";
 
 import CompanyHome from "../pages/company/Home";
 import CompanyProfile from "../pages/company/Profile";
 import CompanyUploadVideo from "../pages/company/UploadVideo";
 import CompanyVideoLogs from "../pages/company/VideoLogs";
+import CompanyStreamAnalysis from "../pages/company/StreamAnalysis";
 
 // Define routes for different user types
 const governmentRoutes = [
@@ -18,6 +20,7 @@ const governmentRoutes = [
   { path: "/government/profile", element: <GovernmentProfile /> },
   { path: "/government/upload-video", element: <GovernmentUploadVideo /> },
   { path: "/government/video-logs", element: <GovernmentVideoLogs /> },
+  { path: "/government/stream-analysis", element: <GovernmentStreamAnalysis /> },
 ];
 
 const companyRoutes = [
@@ -25,6 +28,7 @@ const companyRoutes = [
   { path: "/company/profile", element: <CompanyProfile /> },
   { path: "/company/upload-video", element: <CompanyUploadVideo /> },
   { path: "/company/video-logs", element: <CompanyVideoLogs /> },
+  { path: "/company/stream-analysis", element: <CompanyStreamAnalysis /> },
 ];
 
 // Root redirects based on user type
