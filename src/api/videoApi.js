@@ -47,4 +47,11 @@ export const videoApi = {
     );
     return response.data;
   },
+
+  getUserStreams: async () => {
+    const response = await authenticatedAxios.get(
+      `${SERVER_URL}/videos/user_streams/`
+    );
+    return response.data;
+  },
 };
