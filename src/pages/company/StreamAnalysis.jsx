@@ -200,7 +200,7 @@ function StreamVideo() {
                 <video
                     ref={videoRef}
                     autoPlay
-                    className="w-full max-w-2xl mx-auto rounded-lg shadow-lg mb-4"
+                    className="border w-full max-w-2xl mx-auto rounded-lg shadow-lg mb-4"
                 />
 
                 {/* Add prompt input section */}
