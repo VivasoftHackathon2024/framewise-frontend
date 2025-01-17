@@ -34,6 +34,9 @@ const companyRoutes = [
 // Root redirects based on user type
 const getRootRedirect = () => {
   const user = JSON.parse(localStorage.getItem('user'));
+  
+  // Return login path if no user found
+  if (!user) return '/login';
 
   switch (user.user_type) {
     case 'government':

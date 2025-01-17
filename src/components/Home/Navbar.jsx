@@ -73,9 +73,10 @@ export default function Navbar() {
     }
 
     const getNavItems = () => {
-        const userType = JSON.parse(localStorage.getItem('user')).user_type;
-
-        switch (userType) {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (!user) return [];
+        
+        switch (user.user_type) {
             case 'government':
                 return [
                     { name: 'Dashboard', path: '/government/home', icon: <FiHome className="text-lg" /> },

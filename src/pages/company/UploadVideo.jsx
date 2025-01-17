@@ -101,16 +101,18 @@ const UploadVideo = () => {
             setIsGeneratingSpecializedAnalysis(false);
             
             return {
-                suspicious_evaluation: suspicious.status === 'fulfilled' ? suspicious.value || null : null,
-                tamper_evaluation: tamper.status === 'fulfilled' ? tamper.value || null : null,
+                suspicious_evaluation: suspicious.status === 'fulfilled' ? suspicious.value : null,
+                tamper_evaluation: tamper.status === 'fulfilled' ? tamper.value : null,
                 customer_behaviour: processedBehavior
             };
         },
         onSuccess: (data) => {
             setUploadedVideo(prev => ({
                 ...prev,
-                suspicious_evaluation: data.suspicious_evaluation,
-                tamper_evaluation: data.tamper_evaluation,
+                agents: {
+                    suspicious: data.suspicious_evaluation,
+                    tamper: data.tamper_evaluation
+                },
                 customer_behaviour: data.customer_behaviour
             }));
             toast.success('Analysis completed successfully!', successToastConfig);
