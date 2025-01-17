@@ -23,6 +23,8 @@ function StreamVideo() {
     const [isGeneratingSpecializedAnalysis, setIsGeneratingSpecializedAnalysis] = useState(false);
     const [analysisResults, setAnalysisResults] = useState(null);
     const [lastVideoId, setLastVideoId] = useState(null);
+    const [analysisPrompt, setAnalysisPrompt] = useState('');
+    const [isPromptEditable, setIsPromptEditable] = useState(true);
 
     // Upload video mutation
     const uploadVideoMutation = useMutation({
@@ -40,7 +42,10 @@ function StreamVideo() {
     // Analyze video mutation
     const analyzeVideoMutation = useMutation({
         mutationFn: async (videoId) => {
-            const response = await authenticatedAxios.post(`${SERVER_URL}/videos/${videoId}/analyze_stream/`);
+            const response = await authenticatedAxios.post(
+                `${SERVER_URL}/videos/${videoId}/analyze_stream/`,
+                { prompt: analysisPrompt }
+            );
             return response.data;
         },
         onSuccess: (data) => {
@@ -195,6 +200,17 @@ function StreamVideo() {
 
     const isLoading = uploadVideoMutation.isPending || analyzeVideoMutation.isPending;
 
+    const handleSetPrompt = () => {
+        if (isPromptEditable) {
+            // Only set prompt if there's content
+            if (analysisPrompt.trim()) {
+                setIsPromptEditable(false);
+            }
+        } else {
+            setIsPromptEditable(true);
+        }
+    };
+
     return (
         <div className="container mx-auto px-4 py-8">
             <div className="mb-8">
@@ -204,6 +220,28 @@ function StreamVideo() {
                     autoPlay
                     className="w-full max-w-2xl mx-auto rounded-lg shadow-lg mb-4"
                 />
+
+                {/* Add prompt input section */}
+                <div className="max-w-2xl mx-auto mb-4">
+                    <div className="flex gap-2">
+                        <input
+                            type="text"
+                            value={analysisPrompt}
+                            onChange={(e) => setAnalysisPrompt(e.target.value)}
+                            disabled={!isPromptEditable}
+                            placeholder="Enter what to look out for in the stream (e.g., unusual baby activity, theft)"
+                            className="flex-1 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500
+                                     disabled:bg-gray-50 disabled:text-gray-700"
+                        />
+                        <button
+                            onClick={handleSetPrompt}
+                            className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors"
+                        >
+                            {isPromptEditable ? 'Set' : 'Edit'}
+                        </button>
+                    </div>
+                </div>
+
                 <div className="flex justify-center items-center gap-4">
                     <button
                         className={`px-6 py-2 rounded-md font-semibold text-white transition-colors
